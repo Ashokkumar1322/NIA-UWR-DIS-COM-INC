@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U/W Guidelines Portal</title>
+    <style>
+        /* CSS Styling for a clean, professional look */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .nav-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .btn-home { background-color: #27ae60; color: white; }
+        .btn-home:hover { background-color: #219653; }
+        .btn-back { background-color: #e67e22; color: white; }
+        .btn-back:hover { background-color: #d35400; }
+        
+        .selection-area {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .details-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #eef2f5;
+            border-left: 5px solid #2980b9;
+            font-size: 16px;
+            line-height: 1.6;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>U/W Guidelines, Discount, Commn and Incentives</h1>
+    
+    <!-- Navigation Buttons (Hidden on Home Page) -->
+    <div class="nav-container" id="navContainer" style="display: none;">
+        <button class="btn-home" onclick="goHome()">🏠 Home</button>
+        <button class="btn-back" onclick="goBack()">⬅ Back</button>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="selection-area" id="selectionArea">
+        <label id="dropdownLabel">Select your Department:</label>
+        <select id="dynamicDropdown" onchange="handleSelection(this.value)">
+            <!-- Options injected by JavaScript -->
+        </select>
+    </div>
+
+    <!-- Final Details Area -->
+    <div class="details-box" id="detailsBox"></div>
+</div>
+
+<script>
+    // The Data Structure
+    // This perfectly matches the image_f22fbe.png structure and adds deeper levels.
+    // Add your actual content by replacing the text inside the quotes.
+    const websiteData = {
+        "HEALTH": {
+            "U/W GUIDELINES": {
+                "Individual Health": "Here are the specific U/W guidelines for Individual Health policies. (You can type paragraphs of information here).",
+                "Group Health": "Here are the specific U/W guidelines for Group Health policies."
+            },
+            "DISCOUNT": "Details regarding Health discounts go here...",
+            "COMMN AND INCENTIVES": "Details regarding Health commissions and incentives go here..."
+        },
+        "MOTOR": {
+            "U/W GUIDELINES": "Motor underwriting guidelines are listed here.",
+            "DISCOUNT": "Motor discount structures...",
+            "COMMN AND INCENTIVES": "Motor commission rates..."
+        },
+        "FIRE": { "Details": "Content for Fire department to be updated." },
+        "ENGINEERING": { "Details": "Content for Engineering to be updated." },
+        "MARINE CARGO": { "Details": "Content for Marine Cargo to be updated." },
+        "MARINE HULL": { "Details": "Content for Marine Hull to be updated." },
+        "AVIATION": { "Details": "Content for Aviation to be updated." },
+        "MISC AND P.A": { "Details": "Content for Misc and P.A to be updated." },
+        "LIABILITY": { "Details": "Content for Liability to be updated." },
+        "RURAL, CREDIT, SURETY BOND": { "Details": "Content for Rural, Credit, Surety Bond to be updated." }
+    };
+
+    // State Management
+    let currentPath = []; // Keeps track of where the user is (e.g., ['HEALTH', 'U/W GUIDELINES'])
+
+    // Core Functions
+    function render() {
+        const navContainer = document.getElementById('navContainer');
+        const selectionArea = document.getElementById('selectionArea');
+        const dropdown = document.getElementById('dynamicDropdown');
+        const dropdownLabel = document.getElementById('dropdownLabel');
+        const detailsBox = document.getElementById('detailsBox');
+
+        // Show/Hide Nav Buttons based on whether we are at the root level
+        if (currentPath.length === 0) {
+            navContainer.style.display = 'none';
+        } else {
+            navContainer.style.display = 'flex';
+        }
+
+        // Traverse the data object based on current path
+        let currentNode = websiteData;
+        for (let i = 0; i < currentPath.length; i++) {
+            currentNode = currentNode[currentPath[i]];
+        }
+
+        // Decide what to show: A new dropdown OR final text details
+        if (typeof currentNode === 'object' && currentNode !== null) {
+            // It's an object with more options, show a dropdown
+            selectionArea.style.display = 'block';
+            detailsBox.style.display = 'none';
+            
+            // Update label
+            if (currentPath.length === 0) {
+                dropdownLabel.innerText = "Select your Department:";
+            } else {
+                dropdownLabel.innerText = `Select option for ${currentPath[currentPath.length - 1]}:`;
+            }
+
+            // Populate Dropdown
+            dropdown.innerHTML = '<option value="" disabled selected>-- Please select --</option>';
+            const keys = Object.keys(currentNode);
+            keys.forEach(key => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.text = key;
+                dropdown.appendChild(option);
+            });
+        } else if (typeof currentNode === 'string') {
+            // It's final text, hide dropdown and show details box
+            selectionArea.style.display = 'none';
+            detailsBox.style.display = 'block';
+            detailsBox.innerHTML = `<strong>${currentPath[currentPath.length - 1]}:</strong><br><br>${currentNode}`;
+        }
+    }
+
+    // Triggered when a user selects an option in the dropdown
+    function handleSelection(selectedValue) {
+        if (!selectedValue) return;
+        currentPath.push(selectedValue);
+        render();
+    }
+
+    // Go back one level
+    function goBack() {
+        if (currentPath.length > 0) {
+            currentPath.pop();
+            render();
+        }
+    }
+
+    // Go straight back to the beginning
+    function goHome() {
+        currentPath = [];
+        render();
+    }
+
+    // Initial render on page load
+    window.onload = render;
+</script>
+
+</body>
+</html>
