@@ -64,6 +64,9 @@
             border-radius: 4px;
             background-color: #fff;
             cursor: pointer;
+            /* Mobile-friendly sizing to prevent overflow */
+            box-sizing: border-box; 
+            white-space: normal;
         }
         .details-box {
             margin-top: 20px;
@@ -101,12 +104,10 @@
 
 <script>
     // The Data Structure
-    // This perfectly matches the image_f22fbe.png structure and adds deeper levels.
-    // Add your actual content by replacing the text inside the quotes.
     const websiteData = {
         "HEALTH": {
             "U/W GUIDELINES": {
-                "Individual Health": "Here are the specific U/W guidelines for Individual Health policies. (You can type paragraphs of information here).",
+                "Individual Health": "Here are the specific U/W guidelines for Individual Health policies.",
                 "Group Health": "Here are the specific U/W guidelines for Group Health policies."
             },
             "DISCOUNT": "Details regarding Health discounts go here...",
@@ -114,7 +115,36 @@
         },
         "MOTOR": {
             "U/W GUIDELINES": "Motor underwriting guidelines are listed here.",
-            "DISCOUNT": "Motor discount structures...",
+            "DISCOUNT": {
+                "SIP": {
+                    "PC": {
+                        "New (Except Maruti, Ford & Etios from Toyota)": {
+                            "Discount with or without add-on": "Details for New PC Discount with/without add-on go here.",
+                            "Discount on add-on cover premium": "Details for New PC Discount on add-on cover go here."
+                        },
+                        "Old (Except Maruti, Ford & Etios from Toyota)": {
+                            "Discount with or without add-on": "Details for Old PC Discount with/without add-on go here.",
+                            "Discount on add-on cover premium": "Details for Old PC Discount on add-on cover go here."
+                        },
+                        "SOAD (Except Maruti, Ford & Etios from Toyota)": {
+                            "Discount with or without add-on": "Details for SOAD PC Discount with/without add-on go here.",
+                            "Discount on add-on cover premium": "Details for SOAD PC Discount on add-on cover go here."
+                        },
+                        "SOAD Bundled Policy with NIA (Except Maruti, Ford & Etios from Toyota)": {
+                            "Discount with or without add-on": "Details for SOAD Bundled Policy Discount with/without add-on go here.",
+                            "Discount on add-on cover premium": "Details for SOAD Bundled Policy Discount on add-on cover go here."
+                        }
+                    },
+                    "TW": { "Details": "Content for TW to be updated." },
+                    "GCV": { "Details": "Content for GCV to be updated." },
+                    "TRAILERS": { "Details": "Content for TRAILERS to be updated." },
+                    "PCV": { "Details": "Content for PCV to be updated." },
+                    "MISC-D": { "Details": "Content for MISC-D to be updated." }
+                },
+                "NON-SIP": { 
+                    "Details": "Content for NON-SIP to be updated." 
+                }
+            },
             "COMMN AND INCENTIVES": "Motor commission rates..."
         },
         "FIRE": { "Details": "Content for Fire department to be updated." },
@@ -128,7 +158,7 @@
     };
 
     // State Management
-    let currentPath = []; // Keeps track of where the user is (e.g., ['HEALTH', 'U/W GUIDELINES'])
+    let currentPath = [];
 
     // Core Functions
     function render() {
@@ -138,26 +168,25 @@
         const dropdownLabel = document.getElementById('dropdownLabel');
         const detailsBox = document.getElementById('detailsBox');
 
-        // Show/Hide Nav Buttons based on whether we are at the root level
+        // Show/Hide Nav Buttons
         if (currentPath.length === 0) {
             navContainer.style.display = 'none';
         } else {
             navContainer.style.display = 'flex';
         }
 
-        // Traverse the data object based on current path
+        // Traverse the data object
         let currentNode = websiteData;
         for (let i = 0; i < currentPath.length; i++) {
             currentNode = currentNode[currentPath[i]];
         }
 
-        // Decide what to show: A new dropdown OR final text details
+        // Decide what to show
         if (typeof currentNode === 'object' && currentNode !== null) {
-            // It's an object with more options, show a dropdown
+            // It's an object, show a dropdown
             selectionArea.style.display = 'block';
             detailsBox.style.display = 'none';
             
-            // Update label
             if (currentPath.length === 0) {
                 dropdownLabel.innerText = "Select your Department:";
             } else {
@@ -171,24 +200,26 @@
                 const option = document.createElement('option');
                 option.value = key;
                 option.text = key;
+                // Setting a title helps users on desktop hover to see full text if truncated
+                option.title = key; 
                 dropdown.appendChild(option);
             });
         } else if (typeof currentNode === 'string') {
-            // It's final text, hide dropdown and show details box
+            // It's final text, show details box
             selectionArea.style.display = 'none';
             detailsBox.style.display = 'block';
             detailsBox.innerHTML = `<strong>${currentPath[currentPath.length - 1]}:</strong><br><br>${currentNode}`;
         }
     }
 
-    // Triggered when a user selects an option in the dropdown
+    // Handle Selection
     function handleSelection(selectedValue) {
         if (!selectedValue) return;
         currentPath.push(selectedValue);
         render();
     }
 
-    // Go back one level
+    // Navigation logic
     function goBack() {
         if (currentPath.length > 0) {
             currentPath.pop();
@@ -196,13 +227,12 @@
         }
     }
 
-    // Go straight back to the beginning
     function goHome() {
         currentPath = [];
         render();
     }
 
-    // Initial render on page load
+    // Initial render
     window.onload = render;
 </script>
 
