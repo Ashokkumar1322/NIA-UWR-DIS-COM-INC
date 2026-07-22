@@ -46,6 +46,8 @@
         .btn-home:hover { background-color: #219653; }
         .btn-back { background-color: #e67e22; color: white; }
         .btn-back:hover { background-color: #d35400; }
+        .btn-forward { background-color: #3498db; color: white; }
+        .btn-forward:hover { background-color: #2980b9; }
         
         /* Breadcrumb Styling */
         .breadcrumb {
@@ -92,6 +94,15 @@
             line-height: 1.6;
             display: none; /* Hidden by default */
         }
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fdfbf7;
+            border-left: 5px solid #f39c12;
+            font-size: 15px;
+            line-height: 1.5;
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
@@ -103,6 +114,7 @@
     <div class="nav-container" id="navContainer" style="display: none;">
         <button class="btn-home" onclick="goHome()">🏠 Home</button>
         <button class="btn-back" onclick="goBack()">⬅ Back</button>
+        <button class="btn-forward" id="btnForward" onclick="goForward()" style="display: none;">➡ Forward</button>
     </div>
 
     <!-- Breadcrumb Path Tracker -->
@@ -114,6 +126,9 @@
         <select id="dynamicDropdown" onchange="handleSelection(this.value)">
             <!-- Options injected by JavaScript -->
         </select>
+        
+        <!-- Contextual Info Box for Instructions 1 and 3 -->
+        <div id="infoBox" class="info-box"></div>
     </div>
 
     <!-- Final Details Area -->
@@ -137,20 +152,29 @@
                 "SIP": {
                     "PC": {
                         "New (Except Maruti, Ford & Etios from Toyota)": {
-                            "Discount with or without add-on": "Details for New PC Discount with/without add-on go here.",
-                            "Discount on add-on cover premium": "Details for New PC Discount on add-on cover go here."
+                            "Discount with or without add-on": "95%",
+                            "Discount on add-on cover premium": {
+                                "Nil Dep": "Details for Nil Dep discount go here.",
+                                "Engine Protec": "Details for Engine Protec discount go here.",
+                                "RTI": "Details for RTI discount go here.",
+                                "Hybrid Protect": "Details for Hybrid Protect discount go here.",
+                                "Consumables": "Details for Consumables discount go here."
+                            }
                         },
                         "Old (Except Maruti, Ford & Etios from Toyota)": {
-                            "Discount with or without add-on": "Details for Old PC Discount with/without add-on go here.",
+                            "Discount with or without add-on": "90%",
                             "Discount on add-on cover premium": "Details for Old PC Discount on add-on cover go here."
                         },
                         "SOAD Except Maruti, Ford & Etios from Toyota)": {
-                            "Discount with or without add-on": "Details for SOAD PC Discount with/without add-on go here.",
+                            "Discount with or without add-on": "85%",
                             "Discount on add-on cover premium": "Details for SOAD PC Discount on add-on cover go here."
                         },
                         "SOAD Bundled Policy with NIA Except Maruti, Ford & Etios from Toyota)": {
-                            "Discount with or without add-on": "Details for SOAD Bundled Policy Discount with/without add-on go here.",
+                            "Discount with or without add-on": "85",
                             "Discount on add-on cover premium": "Details for SOAD Bundled Policy Discount on add-on cover go here."
+                        },
+                        "Long Term PC Package Policy": {
+                            "Details": "Content for Long Term PC Package Policy to be updated."
                         }
                     },
                     "TW": { "Details": "Content for TW to be updated." },
@@ -159,9 +183,18 @@
                     "PCV": { "Details": "Content for PCV to be updated." },
                     "MISC-D": { "Details": "Content for MISC-D to be updated." }
                 },
-                "NON-SIP": { 
-                    "Details": "Content for NON-SIP to be updated." 
-                }
+                "NON-SIP": `
+                    <ul>
+                        <li>Vehicle age more than 20 years</li>
+                        <li>Fleet owners where fleet is identified by fleet master</li>
+                        <li>Imported vehicles</li>
+                        <li>State Road Transport Vehicles and Vehicles attached to State Road Transport</li>
+                        <li>Type E,F,G policies</li>
+                        <li>New PC > 60 lakh</li>
+                        <li>Old PC incl SAOD-50 lakh</li>
+                        <li>New GCV & New Buses-60 lakh</li>
+                        <li>Old Comm Veh-50 lakh</li>
+                    </ul>`
             },
             "COMMN AND INCENTIVES": "Motor commission rates..."
         },
@@ -177,6 +210,7 @@
 
     // State Management
     let currentPath = [];
+    let forwardPath = [];
 
     // Core Functions
     function render() {
@@ -186,6 +220,8 @@
         const dropdown = document.getElementById('dynamicDropdown');
         const dropdownLabel = document.getElementById('dropdownLabel');
         const detailsBox = document.getElementById('detailsBox');
+        const infoBox = document.getElementById('infoBox');
+        const btnForward = document.getElementById('btnForward');
 
         // Show/Hide Nav Buttons and Breadcrumbs
         if (currentPath.length === 0) {
@@ -194,14 +230,55 @@
         } else {
             navContainer.style.display = 'flex';
             breadcrumb.style.display = 'block';
-            // Update the breadcrumb text using join to create the path trail
             breadcrumb.innerHTML = `Current Path: <span>${currentPath.join(' > ')}</span>`;
         }
+
+        // Manage Forward Button Visibility
+        btnForward.style.display = forwardPath.length > 0 ? 'inline-block' : 'none';
 
         // Traverse the data object
         let currentNode = websiteData;
         for (let i = 0; i < currentPath.length; i++) {
             currentNode = currentNode[currentPath[i]];
+        }
+
+        // Dynamic Info Boxes for specific paths
+        infoBox.style.display = 'none';
+        infoBox.innerHTML = '';
+        const pathString = currentPath.join('>');
+
+        if (pathString === 'MOTOR>DISCOUNT') {
+            infoBox.style.display = 'block';
+            infoBox.innerHTML = `
+                <p><strong>R.O is the Authority for :-</strong></p>
+                <ul>
+                    <li>IDV up to 4 crores for all kind of vehicles</li>
+                    <li>All vehicles belonging to fleet owners, identified by fleet master</li>
+                    <li>All state road transport vehicles attached to state road transport</li>
+                    <li>Vehicle age of package policies-above 20 yrs</li>
+                    <li>Special authority of 95% discount to ROIC is not applicable for GCV > 40,000 kg</li>
+                    <li>Newly Add => Special authority of 95% discount to ROIC is not applicable for renewal of EV Buses</li>
+                </ul>
+                <p><strong>H.O is the Authority for :-</strong></p>
+                <ul>
+                    <li>IDV above 4 crores</li>
+                    <li>Discounts beyond R.O limit</li>
+                    <li>Vehicle registered under Chhattisgarh RTO under GCV (mail 16.1.26)</li>
+                </ul>
+            `;
+        } else if (pathString === 'MOTOR>DISCOUNT>SIP') {
+            infoBox.style.display = 'block';
+            infoBox.innerHTML = `
+                <ul>
+                    <li>Vehicle age for package policies up to 20 yrs</li>
+                    <li>All Stand Alone TP policies.</li>
+                    <li>New PC-60 lakh</li>
+                    <li>Old PC incl SAOD-50 lakh</li>
+                    <li>New GCV-60 lakh</li>
+                    <li>New PCV-60 lakh</li>
+                    <li>Comm Veh incl Trailer 'B'and Misc-D (Agri Tractor, Ambulance, Dispensaries, Fire Bridage & Savage Corps Veh, Hearses, Excavators, Cranes)- 50 lakh</li>
+                </ul>
+            `;
         }
 
         // Decide what to show
@@ -238,19 +315,28 @@
     function handleSelection(selectedValue) {
         if (!selectedValue) return;
         currentPath.push(selectedValue);
+        forwardPath = []; // Clear forward history when a new selection is made
         render();
     }
 
     // Navigation logic
     function goBack() {
         if (currentPath.length > 0) {
-            currentPath.pop();
+            forwardPath.push(currentPath.pop());
+            render();
+        }
+    }
+
+    function goForward() {
+        if (forwardPath.length > 0) {
+            currentPath.push(forwardPath.pop());
             render();
         }
     }
 
     function goHome() {
         currentPath = [];
+        forwardPath = [];
         render();
     }
 
