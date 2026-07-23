@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Required</title>
+</head>
+<body>
+    <h2>Colleague Access Login</h2>
+    <form id="login-form">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" required><br><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" required><br><br>
+        
+        <button type="submit">Log In</button>
+        <p id="error-message" style="color: red;"></p>
+    </form>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+        // === PASTE YOUR KEYS HERE ===
+        const supabaseUrl = 'https://irtohkbqntpubjkrsqdy.supabase.co';
+        const supabaseKey = 'sb_publishable_z7DECp_uyedCITesFSO9DA_YHtRfIGR';
+        // ============================
+        
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMessage.textContent = 'Logging in...';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                errorMessage.textContent = error.message;
+            } else {
+                window.location.href = 'index.html'; 
+            }
+        });
+    </script>
+</body>
+</html>
