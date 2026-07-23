@@ -103,6 +103,13 @@
             line-height: 1.5;
             display: none; /* Hidden by default */
         }
+        .details-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .details-list li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -127,7 +134,7 @@
             <!-- Options injected by JavaScript -->
         </select>
         
-        <!-- Contextual Info Box for Instructions 1 and 3 -->
+        <!-- Contextual Info Box -->
         <div id="infoBox" class="info-box"></div>
     </div>
 
@@ -149,7 +156,35 @@
         "MOTOR": {
             "U/W GUIDELINES": "Motor underwriting guidelines are listed here.",
             "DISCOUNT": {
+                "_info": `
+                    <p><strong>R.O is the Authority for :-</strong></p>
+                    <ul>
+                        <li>IDV up to 4 crores for all kind of vehicles</li>
+                        <li>All vehicles belonging to fleet owners, identified by fleet master</li>
+                        <li>All state road transport vehicles attached to state road transport</li>
+                        <li>Vehicle age of package policies-above 20 yrs</li>
+                        <li>Special authority of 95% discount to ROIC is not applicable for GCV > 40,000 kg</li>
+                        <li>Newly Add => Special authority of 95% discount to ROIC is not applicable for renewal of EV Buses</li>
+                    </ul>
+                    <p><strong>H.O is the Authority for :-</strong></p>
+                    <ul>
+                        <li>IDV above 4 crores</li>
+                        <li>Discounts beyond R.O limit</li>
+                        <li>Vehicle registered under Chhattisgarh RTO under GCV (mail 16.1.26)</li>
+                    </ul>
+                `,
                 "SIP": {
+                    "_info": `
+                        <ul>
+                            <li>Vehicle age for package policies up to 20 yrs</li>
+                            <li>All Stand Alone TP policies.</li>
+                            <li>New PC-60 lakh</li>
+                            <li>Old PC incl SAOD-50 lakh</li>
+                            <li>New GCV-60 lakh</li>
+                            <li>New PCV-60 lakh</li>
+                            <li>Comm Veh incl Trailer 'B' and Misc-D (Agri Tractor, Ambulance, Dispensaries, Fire Bridage & Savage Corps Veh, Hearses, Excavators, Cranes)- 50 lakh</li>
+                        </ul>
+                    `,
                     "PC": {
                         "New (Except Maruti, Ford & Etios from Toyota)": {
                             "Discount with or without add-on": "95%",
@@ -171,7 +206,7 @@
                                 "Consumables": "30% up to 1 yr<br>25% above 1 yr & up to 2 yrs<br>20% above 2 yrs & up to 3 yrs<br>15% above 3 yrs & up to 4 yrs<br>10% above 4 yrs & up to 5 yrs"
                             }
                         },
-                        "SAOD Except Maruti, Ford & Etios from Toyota)": {
+                        "SAOD (Except Maruti, Ford & Etios from Toyota)": {
                             "Discount with or without add-on": "85%",
                             "Discount on add-on cover premium": {
                                 "Nil Dep": "40% up to 3 yrs<br>35% above 3 yrs & up to 5 yrs",
@@ -181,8 +216,8 @@
                                 "Consumables": "30% up to 1 yr<br>25% above 1 yr & up to 2 yrs<br>20% above 2 yrs & up to 3 yrs<br>15% above 3 yrs & up to 4 yrs<br>10% above 4 yrs & up to 5 yrs"
                             }
                         },
-                        "SAOD Bundled Policy with NIA Except Maruti, Ford & Etios from Toyota)": {
-                            "Discount with or without add-on": "85",
+                        "SAOD Bundled Policy with NIA (Except Maruti, Ford & Etios from Toyota)": {
+                            "Discount with or without add-on": "85%",
                             "Discount on add-on cover premium": {
                                 "Nil Dep": "40% up to 3 yrs<br>35% above 3 yrs & up to 5 yrs",
                                 "Engine Protect": "35% up to 3 yrs<br>30% above 3 yrs & up to 5 yrs",
@@ -195,8 +230,22 @@
                             "Details": "Content for Long Term PC Package Policy to be updated."
                         }
                     },
-                    "TW": { "Details": "Content for TW to be updated." },
-                    "GCV": { "Details": "Content for GCV to be updated." },
+                    "TW": {
+                        "New Two Wheeler": {
+                            "Discount with or without add-on": "Content for New Two Wheeler discount to be updated."
+                        },
+                        "Old Two Wheeler": {
+                            "Discount with add-on": "Content for Old Two Wheeler discount with add-on to be updated.",
+                            "Discount without add-on": "Content for Old Two Wheeler discount without add-on to be updated."
+                        },
+                        "SAOD Two Wheeler": {
+                            "Discount with or without add-on": "Content for SAOD Two Wheeler discount to be updated."
+                        }
+                    },
+                    "GCV": {
+                        "Discount with or without add-on": "Content for GCV discount with or without add-on to be updated.",
+                        "Discount on add-on cover premium": "Content for GCV discount on add-on cover premium to be updated."
+                    },
                     "TRAILERS": { "Details": "Content for TRAILERS to be updated." },
                     "PCV": { "Details": "Content for PCV to be updated." },
                     "MISC-D": { "Details": "Content for MISC-D to be updated." }
@@ -230,6 +279,22 @@
     let currentPath = [];
     let forwardPath = [];
 
+    // Helper: Formats deeply nested objects cleanly into HTML
+    function formatLeafContent(content) {
+        if (typeof content === 'string') {
+            return content;
+        }
+        if (typeof content === 'object' && content !== null) {
+            let html = '<ul class="details-list">';
+            for (const [key, value] of Object.entries(content)) {
+                html += `<li><strong>${key}:</strong> ${formatLeafContent(value)}</li>`;
+            }
+            html += '</ul>';
+            return html;
+        }
+        return '';
+    }
+
     // Core Functions
     function render() {
         const navContainer = document.getElementById('navContainer');
@@ -260,48 +325,24 @@
             currentNode = currentNode[currentPath[i]];
         }
 
-        // Dynamic Info Boxes for specific paths
-        infoBox.style.display = 'none';
-        infoBox.innerHTML = '';
-        const pathString = currentPath.join('>');
-
-        if (pathString === 'MOTOR>DISCOUNT') {
+        // Handle Contextual Info Box using _info key
+        if (typeof currentNode === 'object' && currentNode !== null && currentNode._info) {
             infoBox.style.display = 'block';
-            infoBox.innerHTML = `
-                <p><strong>R.O is the Authority for :-</strong></p>
-                <ul>
-                    <li>IDV up to 4 crores for all kind of vehicles</li>
-                    <li>All vehicles belonging to fleet owners, identified by fleet master</li>
-                    <li>All state road transport vehicles attached to state road transport</li>
-                    <li>Vehicle age of package policies-above 20 yrs</li>
-                    <li>Special authority of 95% discount to ROIC is not applicable for GCV > 40,000 kg</li>
-                    <li>Newly Add => Special authority of 95% discount to ROIC is not applicable for renewal of EV Buses</li>
-                </ul>
-                <p><strong>H.O is the Authority for :-</strong></p>
-                <ul>
-                    <li>IDV above 4 crores</li>
-                    <li>Discounts beyond R.O limit</li>
-                    <li>Vehicle registered under Chhattisgarh RTO under GCV (mail 16.1.26)</li>
-                </ul>
-            `;
-        } else if (pathString === 'MOTOR>DISCOUNT>SIP') {
-            infoBox.style.display = 'block';
-            infoBox.innerHTML = `
-                <ul>
-                    <li>Vehicle age for package policies up to 20 yrs</li>
-                    <li>All Stand Alone TP policies.</li>
-                    <li>New PC-60 lakh</li>
-                    <li>Old PC incl SAOD-50 lakh</li>
-                    <li>New GCV-60 lakh</li>
-                    <li>New PCV-60 lakh</li>
-                    <li>Comm Veh incl Trailer 'B'and Misc-D (Agri Tractor, Ambulance, Dispensaries, Fire Bridage & Savage Corps Veh, Hearses, Excavators, Cranes)- 50 lakh</li>
-                </ul>
-            `;
+            infoBox.innerHTML = currentNode._info;
+        } else {
+            infoBox.style.display = 'none';
+            infoBox.innerHTML = '';
         }
 
-        // Decide what to show
+        // Determine available options, filtering out internal properties like '_info'
+        let keys = [];
         if (typeof currentNode === 'object' && currentNode !== null) {
-            // It's an object, show a dropdown
+            keys = Object.keys(currentNode).filter(k => k !== '_info');
+        }
+
+        // Decide what to display
+        if (keys.length > 0) {
+            // It's a navigational node with selectable options
             selectionArea.style.display = 'block';
             detailsBox.style.display = 'none';
             
@@ -313,19 +354,22 @@
 
             // Populate Dropdown
             dropdown.innerHTML = '<option value="" disabled selected>-- Please select --</option>';
-            const keys = Object.keys(currentNode);
             keys.forEach(key => {
                 const option = document.createElement('option');
                 option.value = key;
                 option.text = key;
-                option.title = key; // Helpful for desktop hover
+                option.title = key;
                 dropdown.appendChild(option);
             });
-        } else if (typeof currentNode === 'string') {
-            // It's final text, show details box
+            dropdown.selectedIndex = 0; // Reset dropdown to default option
+        } else {
+            // It's a leaf node, format and display content
             selectionArea.style.display = 'none';
             detailsBox.style.display = 'block';
-            detailsBox.innerHTML = `<strong>${currentPath[currentPath.length - 1]}:</strong><br><br>${currentNode}`;
+            
+            const title = currentPath[currentPath.length - 1];
+            const contentHTML = formatLeafContent(currentNode);
+            detailsBox.innerHTML = `<strong>${title}:</strong><br><br>${contentHTML}`;
         }
     }
 
