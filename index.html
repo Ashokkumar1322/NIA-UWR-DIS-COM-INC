@@ -1,21 +1,3 @@
-<script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-
-    const supabaseUrl = 'https://irtohkbqntpubjkrsqdy.supabase.co';
-    const supabaseKey = 'sb_publishable_z7DECp_uyedCITesFSO9DA_YHtRfIGR
-
-';
-    
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    // Check if user is logged in
-    const { data: { session } } = await supabase.auth.getSession();
-
-    // If not logged in, redirect to login page immediately
-    if (!session) {
-        window.location.replace('login.html');
-    }
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
