@@ -13,7 +13,7 @@
             padding: 40px 20px;
         }
         .container {
-            max-width: 400px; /* Narrower for login */
+            max-width: 400px; 
             margin: 60px auto;
             background: #ffffff;
             padding: 30px;
@@ -57,35 +57,58 @@
 
 <div class="container">
     <h1>Portal Login</h1>
-    <p style="color: #7f8c8d; margin-bottom: 20px; font-size: 14px;">Sign in to view U/W Guidelines.</p>
     
-    <input type="email" id="auth-email" class="auth-input" placeholder="Email Address" required>
-    <input type="password" id="auth-password" class="auth-input" placeholder="Password" required>
-    
-    <button class="btn-login" onclick="handleLogin()">Login</button>
-    <button class="btn-forgot" onclick="handleForgotPassword()">Forgot Password?</button>
+    <!-- STANDARD LOGIN FORM -->
+    <div id="login-form">
+        <p style="color: #7f8c8d; margin-bottom: 20px; font-size: 14px;">Sign in to view U/W Guidelines.</p>
+        <input type="email" id="auth-email" class="auth-input" placeholder="Email Address" required>
+        <input type="password" id="auth-password" class="auth-input" placeholder="Password" required>
+        
+        <button class="btn-login" onclick="handleLogin()">Login</button>
+        <button class="btn-forgot" onclick="handleForgotPassword()">Forgot Password?</button>
+    </div>
+
+    <!-- UPDATE PASSWORD FORM (Hidden by default) -->
+    <div id="update-password-form" style="display: none;">
+        <p style="color: #27ae60; margin-bottom: 20px; font-size: 14px; font-weight: bold;">Reset link verified. Enter your new password below.</p>
+        <input type="password" id="new-password" class="auth-input" placeholder="New Password" required>
+        <button class="btn-login" onclick="handleUpdatePassword()">Save New Password</button>
+    </div>
 </div>
 
 <!-- SUPABASE LOGIC -->
 <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
-    // *** IMPORTANT: REPLACE THESE WITH YOUR ACTUAL SUPABASE KEYS ***
+    // *** IMPORTANT: PASTE YOUR ACTUAL URL AND KEY HERE ***
     const supabaseUrl = 'https://irtohkbqntpubjkrsqdy.supabase.co';
     const supabaseAnonKey = 'sb_publishable_z7DECp_uyedCITesFSO9DA_YHtRfIGR';
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
     const emailInput = document.getElementById('auth-email');
     const passwordInput = document.getElementById('auth-password');
+    const loginForm = document.getElementById('login-form');
+    const updatePasswordForm = document.getElementById('update-password-form');
 
-    // Check if already logged in. If yes, go straight to index.html
+    // 1. Listen for Password Recovery events (When they click the link in their email)
+    supabase.auth.onAuthStateChange((event, session) => {
+        if (event === 'PASSWORD_RECOVERY') {
+            // Hide normal login, show the new password box
+            loginForm.style.display = 'none';
+            updatePasswordForm.style.display = 'block';
+        }
+    });
+
+    // 2. Check if already logged in natively
     async function checkSession() {
         const { data: { session } } = await supabase.auth.getSession();
-        if (session) {
+        // If they have a session, and they aren't trying to recover a password, send them in
+        if (session && updatePasswordForm.style.display === 'none') {
             window.location.href = 'index.html';
         }
     }
 
+    // 3. Login Function
     window.handleLogin = async function() {
         const email = emailInput.value;
         const password = passwordInput.value;
@@ -103,11 +126,11 @@
         if (error) {
             alert("Login failed: " + error.message);
         } else {
-            // Redirect to your main portal page
             window.location.href = 'index.html';
         }
     };
 
+    // 4. Send Forgot Password Email
     window.handleForgotPassword = async function() {
         const email = emailInput.value;
         if (!email) {
@@ -115,8 +138,8 @@
             return;
         }
 
+        // Send the email, telling Supabase to bring them back to this exact page
         const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-            // This redirects them back to login.html to sign in with their new password
             redirectTo: window.location.href, 
         });
 
@@ -127,7 +150,29 @@
         }
     };
 
-    // Run session check immediately when the page loads
+    // 5. Save the New Password (The missing piece!)
+    window.handleUpdatePassword = async function() {
+        const newPassword = document.getElementById('new-password').value;
+        
+        if (!newPassword || newPassword.length < 6) {
+            alert("Please enter a password of at least 6 characters.");
+            return;
+        }
+
+        // Tell Supabase to update the user's password
+        const { data, error } = await supabase.auth.updateUser({
+            password: newPassword
+        });
+
+        if (error) {
+            alert("Error updating password: " + error.message);
+        } else {
+            alert("Password successfully updated! Taking you to the portal...");
+            window.location.href = 'index.html'; // Send them straight into the app
+        }
+    };
+
+    // Run check on load
     checkSession();
 </script>
 
