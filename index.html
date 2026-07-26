@@ -48,6 +48,8 @@
         .btn-back:hover { background-color: #d35400; }
         .btn-forward { background-color: #3498db; color: white; }
         .btn-forward:hover { background-color: #2980b9; }
+        .btn-logout { background-color: #e74c3c; color: white; float: right; margin-bottom: 20px; }
+        .btn-logout:hover { background-color: #c0392b; }
         
         /* Breadcrumb Styling */
         .breadcrumb {
@@ -82,7 +84,7 @@
             border-radius: 4px;
             background-color: #fff;
             cursor: pointer;
-            box-sizing: border-box; /* Mobile-friendly sizing to prevent overflow */
+            box-sizing: border-box; 
             white-space: normal;
         }
         .details-box {
@@ -92,7 +94,7 @@
             border-left: 5px solid #2980b9;
             font-size: 16px;
             line-height: 1.6;
-            display: none; /* Hidden by default */
+            display: none; 
         }
         .info-box {
             margin-top: 20px;
@@ -101,7 +103,7 @@
             border-left: 5px solid #f39c12;
             font-size: 15px;
             line-height: 1.5;
-            display: none; /* Hidden by default */
+            display: none; 
         }
         .details-list {
             margin: 0;
@@ -114,9 +116,12 @@
 </head>
 <body>
 
-<div class="container">
-<button class="btn-logout" onclick="handleLogout()" style="background-color: #e74c3c; color: white; float: right; margin-bottom: 20px;">Logout</button>
-<div style="clear:both;"></div>
+<!-- THIS CONTAINER IS HIDDEN BY DEFAULT TO PREVENT UNAUTHENTICATED ACCESS -->
+<div class="container" id="main-app" style="display: none;">
+    
+    <button class="btn-logout" onclick="handleLogout()">Logout</button>
+    <div style="clear:both;"></div>
+
     <h1>U/W Guidelines, Discount, Commn and Incentives</h1>
     
     <!-- Navigation Buttons -->
@@ -551,7 +556,6 @@
         const infoBox = document.getElementById('infoBox');
         const btnForward = document.getElementById('btnForward');
 
-        // Show/Hide Nav Buttons and Breadcrumbs
         if (currentPath.length === 0) {
             navContainer.style.display = 'none';
             breadcrumb.style.display = 'none';
@@ -561,16 +565,13 @@
             breadcrumb.innerHTML = `Current Path: <span>${currentPath.join(' > ')}</span>`;
         }
 
-        // Manage Forward Button Visibility
         btnForward.style.display = forwardPath.length > 0 ? 'inline-block' : 'none';
 
-        // Traverse the data object
         let currentNode = websiteData;
         for (let i = 0; i < currentPath.length; i++) {
             currentNode = currentNode[currentPath[i]];
         }
 
-        // Handle Contextual Info Box using _info key
         if (typeof currentNode === 'object' && currentNode !== null && currentNode._info) {
             infoBox.style.display = 'block';
             infoBox.innerHTML = currentNode._info;
@@ -579,15 +580,12 @@
             infoBox.innerHTML = '';
         }
 
-        // Determine available options, filtering out internal properties like '_info'
         let keys = [];
         if (typeof currentNode === 'object' && currentNode !== null) {
             keys = Object.keys(currentNode).filter(k => k !== '_info');
         }
 
-        // Decide what to display
         if (keys.length > 0) {
-            // It's a navigational node with selectable options
             selectionArea.style.display = 'block';
             detailsBox.style.display = 'none';
             
@@ -597,7 +595,6 @@
                 dropdownLabel.innerText = `Select option for ${currentPath[currentPath.length - 1]}:`;
             }
 
-            // Populate Dropdown
             dropdown.innerHTML = '<option value="" disabled selected>-- Please select --</option>';
             keys.forEach(key => {
                 const option = document.createElement('option');
@@ -606,9 +603,8 @@
                 option.title = key;
                 dropdown.appendChild(option);
             });
-            dropdown.selectedIndex = 0; // Reset dropdown to default option
+            dropdown.selectedIndex = 0;
         } else {
-            // It's a leaf node, format and display content
             selectionArea.style.display = 'none';
             detailsBox.style.display = 'block';
             
@@ -618,15 +614,13 @@
         }
     }
 
-    // Handle Selection
     function handleSelection(selectedValue) {
         if (!selectedValue) return;
         currentPath.push(selectedValue);
-        forwardPath = []; // Clear forward history when a new selection is made
+        forwardPath = []; 
         render();
     }
 
-    // Navigation logic
     function goBack() {
         if (currentPath.length > 0) {
             forwardPath.push(currentPath.pop());
@@ -647,29 +641,46 @@
         render();
     }
 
-    // Initial render
     window.onload = render;
 </script>
+
+<!-- === SUPABASE AUTHENTICATION ENFORCER === -->
 <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
     // *** IMPORTANT: REPLACE THESE WITH YOUR ACTUAL SUPABASE KEYS ***
-    const supabaseUrl = 'irtohkbqntpubjkrsqdy';
+    // Example: const supabaseUrl = 'https://xyxyxyxyxyxyx.supabase.co';
+    const supabaseUrl = 'https://irtohkbqntpubjkrsqdy.supabase.co';
     const supabaseAnonKey = 'sb_publishable_z7DECp_uyedCITesFSO9DA_YHtRfIGR';
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    
+    let supabase;
 
-    // Verify user is logged in
+    try {
+        // This will crash if the URL is not a valid web address.
+        supabase = createClient(supabaseUrl, supabaseAnonKey);
+    } catch (err) {
+        console.error("Invalid Supabase keys. Booting back to login to be safe.", err);
+        window.location.href = 'login.html';
+    }
+
     async function enforceLogin() {
-        const { data: { session } } = await supabase.auth.getSession();
+        // If Supabase failed to load, stop here. The try-catch above handles the redirect.
+        if (!supabase) return; 
+
+        const { data: { session }, error } = await supabase.auth.getSession();
         
-        // If no session exists, boot them back to the login page
-        if (!session) {
+        // If no session exists or there is an error, boot them back to the login page
+        if (!session || error) {
             window.location.href = 'login.html';
+        } else {
+            // Only reveal the application content IF they are successfully logged in
+            document.getElementById('main-app').style.display = 'block';
         }
     }
 
-    // Attach Logout logic
+    // Attach Logout logic to the window so the HTML button can trigger it
     window.handleLogout = async function() {
+        if (!supabase) return;
         const { error } = await supabase.auth.signOut();
         if (error) {
             alert("Error logging out: " + error.message);
@@ -678,7 +689,9 @@
         }
     };
 
+    // Run the check immediately
     enforceLogin();
 </script>
+
 </body>
 </html>
