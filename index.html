@@ -113,84 +113,10 @@
     </style>
 </head>
 <body>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My App Login</title>
-</head>
-<body>
 
-  <h2>Welcome to My App</h2>
-  
-  <!-- The Login/Signup Form -->
-  <div>
-    <label>Email:</label>
-    <input type="email" id="email-input" placeholder="Enter your email" />
-    <br><br>
-    
-    <label>Password:</label>
-    <input type="password" id="password-input" placeholder="Enter your password" />
-    <br><br>
-    
-    <button onclick="signUp()">Sign Up</button>
-    <button onclick="logIn()">Log In</button>
-  </div>
-
-  <!-- A place to show messages to the user -->
-  <p id="message" style="color: blue;"></p>
-<!-- Bring in the Supabase library -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    // 1. Tell your app where your specific Supabase project lives
-    const supabaseUrl = 'irtohkbqntpubjkrsqdy';
-    const supabaseKey = 'sb_publishable_z7DECp_uyedCITesFSO9DA_YHtRfIGR';
-    
-    // 2. Initialize the connection
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-// Function to handle Sign Up
-    async function signUp() {
-      const email = document.getElementById('email-input').value;
-      const password = document.getElementById('password-input').value;
-      const messageElement = document.getElementById('message');
-
-      messageElement.innerText = "Signing up...";
-
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-      });
-
-      if (error) {
-        messageElement.innerText = "Error: " + error.message;
-      } else {
-        messageElement.innerText = "Success! Please check your email to confirm.";
-      }
-    }
-
-    // Function to handle Log In
-    async function logIn() {
-      const email = document.getElementById('email-input').value;
-      const password = document.getElementById('password-input').value;
-      const messageElement = document.getElementById('message');
-
-      messageElement.innerText = "Logging in...";
-
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      });
-
-      if (error) {
-        messageElement.innerText = "Error: " + error.message;
-      } else {
-        messageElement.innerText = "Success! You are now logged in.";
-      }
-    }
-  </script>
-</body>
-</html>
 <div class="container">
+<button class="btn-logout" onclick="handleLogout()" style="background-color: #e74c3c; color: white; float: right; margin-bottom: 20px;">Logout</button>
+<div style="clear:both;"></div>
     <h1>U/W Guidelines, Discount, Commn and Incentives</h1>
     
     <!-- Navigation Buttons -->
@@ -724,6 +650,35 @@
     // Initial render
     window.onload = render;
 </script>
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
+    // *** IMPORTANT: REPLACE THESE WITH YOUR ACTUAL SUPABASE KEYS ***
+    const supabaseUrl = 'irtohkbqntpubjkrsqdy';
+    const supabaseAnonKey = 'sb_publishable_z7DECp_uyedCITesFSO9DA_YHtRfIGR';
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+    // Verify user is logged in
+    async function enforceLogin() {
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        // If no session exists, boot them back to the login page
+        if (!session) {
+            window.location.href = 'login.html';
+        }
+    }
+
+    // Attach Logout logic
+    window.handleLogout = async function() {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            alert("Error logging out: " + error.message);
+        } else {
+            window.location.href = 'login.html';
+        }
+    };
+
+    enforceLogin();
+</script>
 </body>
 </html>
