@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - U/W Guidelines Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 400px; /* Narrower for login */
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .auth-input { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+            font-size: 16px; 
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .btn-login { background-color: #2c3e50; color: white; }
+        .btn-login:hover { background-color: #1a252f; }
+        .btn-forgot { background-color: transparent; color: #3498db; text-decoration: underline; padding: 5px; font-weight: normal; }
+        .btn-forgot:hover { color: #2980b9; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>Portal Login</h1>
+    <p style="color: #7f8c8d; margin-bottom: 20px; font-size: 14px;">Sign in to view U/W Guidelines.</p>
+    
+    <input type="email" id="auth-email" class="auth-input" placeholder="Email Address" required>
+    <input type="password" id="auth-password" class="auth-input" placeholder="Password" required>
+    
+    <button class="btn-login" onclick="handleLogin()">Login</button>
+    <button class="btn-forgot" onclick="handleForgotPassword()">Forgot Password?</button>
+</div>
+
+<!-- SUPABASE LOGIC -->
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+
+    // *** IMPORTANT: REPLACE THESE WITH YOUR ACTUAL SUPABASE KEYS ***
+    const supabaseUrl = 'YOUR_SUPABASE_URL';
+    const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+    const emailInput = document.getElementById('auth-email');
+    const passwordInput = document.getElementById('auth-password');
+
+    // Check if already logged in. If yes, go straight to index.html
+    async function checkSession() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+            window.location.href = 'index.html';
+        }
+    }
+
+    window.handleLogin = async function() {
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        
+        if (!email || !password) {
+            alert("Please enter both email and password.");
+            return;
+        }
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            alert("Login failed: " + error.message);
+        } else {
+            // Redirect to your main portal page
+            window.location.href = 'index.html';
+        }
+    };
+
+    window.handleForgotPassword = async function() {
+        const email = emailInput.value;
+        if (!email) {
+            alert("Please type your email address into the Email box first, then click Forgot Password.");
+            return;
+        }
+
+        const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            // This redirects them back to login.html to sign in with their new password
+            redirectTo: window.location.href, 
+        });
+
+        if (error) {
+            alert("Error: " + error.message);
+        } else {
+            alert("Password reset email sent! Check your inbox.");
+        }
+    };
+
+    // Run session check immediately when the page loads
+    checkSession();
+</script>
+
+</body>
+</html>
