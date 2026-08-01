@@ -805,7 +805,324 @@
                 "Details": "Content for Fire discounts to be updated."
             },
             "COMMN AND INCENTIVES": {
-                "Details": "Content for Fire commissions and incentives to be updated."
+                "REMUNERATION": `
+                    <div id="remuneration-search-container">
+                        <input type="text" id="remSearchInput" onkeyup="filterRemuneration()" placeholder="Search Risk Code or Occupancy..." style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px; font-size:16px; box-sizing: border-box;">
+                        
+                        <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; border-radius: 4px;">
+                            <table id="remTable" style="width:100%; border-collapse: collapse; text-align: left; background-color: #fff;">
+                                <thead style="position: sticky; top: 0; background-color: #2980b9; color: white; box-shadow: 0 2px 2px -1px rgba(0,0,0,0.4);">
+                                    <tr>
+                                        <th style="padding: 10px; border-right: 1px solid #ddd;">RISK CODE</th>
+                                        <th style="padding: 10px; border-right: 1px solid #ddd;">OCCUPANCY</th>
+                                        <th style="padding: 10px;">Remuneration %</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td style="padding: 10px; border: 1px solid #ddd;">1001</td><td style="padding: 10px; border: 1px solid #ddd;">Dwellings</td><td style="padding: 10px; border: 1px solid #ddd;">40</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1002</td><td style="padding: 10px; border: 1px solid #ddd;">Places of worships</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1003</td><td style="padding: 10px; border: 1px solid #ddd;">Libraries</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1004</td><td style="padding: 10px; border: 1px solid #ddd;">Museums</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1005</td><td style="padding: 10px; border: 1px solid #ddd;">Schools/Colleges</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1006</td><td style="padding: 10px; border: 1px solid #ddd;">Hospitals including X-ray and other Diagnostic clinics</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1007</td><td style="padding: 10px; border: 1px solid #ddd;">Office premises / Meeting Rooms</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1008</td><td style="padding: 10px; border: 1px solid #ddd;">Auditoriums / Planetarium</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1009</td><td style="padding: 10px; border: 1px solid #ddd;">Mess Houses / Clubs</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1010</td><td style="padding: 10px; border: 1px solid #ddd;">Marriage Halls</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1011</td><td style="padding: 10px; border: 1px solid #ddd;">Showrooms and display centres where goods are kept for display and no sales are carried out</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1012</td><td style="padding: 10px; border: 1px solid #ddd;">Educational and Research Institutes imparting training in various crafts</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1013</td><td style="padding: 10px; border: 1px solid #ddd;">Lodging/Boarding Houses</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1014</td><td style="padding: 10px; border: 1px solid #ddd;">Cycle Shed</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1015</td><td style="padding: 10px; border: 1px solid #ddd;">Dish Antenna 41105</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1016</td><td style="padding: 10px; border: 1px solid #ddd;">Indoor stadiums, health Club, Gymnasium and Swimming Pool</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1017</td><td style="padding: 10px; border: 1px solid #ddd;">Cafes, Restaurants, Hotels, Confectioner and Sweet meat sellers, Health Resorts</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1018</td><td style="padding: 10px; border: 1px solid #ddd;">Laundries / Dry Cleaning</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1019</td><td style="padding: 10px; border: 1px solid #ddd;">Battery Charging Service Stations</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1020</td><td style="padding: 10px; border: 1px solid #ddd;">Amusement Parks</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1021</td><td style="padding: 10px; border: 1px solid #ddd;">Hoarding, Neon signs</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1022</td><td style="padding: 10px; border: 1px solid #ddd;">Sports Galleries, Outdoor Stadiums</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1023</td><td style="padding: 10px; border: 1px solid #ddd;">Shops dealing in goods otherwise not provided for</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1024</td><td style="padding: 10px; border: 1px solid #ddd;">Shops dealing in hazardous goods</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1025</td><td style="padding: 10px; border: 1px solid #ddd;">Arms and Ammunition dealers</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1026</td><td style="padding: 10px; border: 1px solid #ddd;">Motor Vehicle showroom including sales and service</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1027</td><td style="padding: 10px; border: 1px solid #ddd;">Fuel Station - Petrol/Diesel Kiosks [without CNG]</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1028</td><td style="padding: 10px; border: 1px solid #ddd;">Fuel Station - Petrol/Diesel Kiosks [with CNG]</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">1029</td><td style="padding: 10px; border: 1px solid #ddd;">Data Processing/Call Centres/Business Process Outsourcing Centres</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2001</td><td style="padding: 10px; border: 1px solid #ddd;">Abrasive Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2002</td><td style="padding: 10px; border: 1px solid #ddd;">Aerated Water Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2003</td><td style="padding: 10px; border: 1px solid #ddd;">Aerial Ropeway including trolley stations</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2004</td><td style="padding: 10px; border: 1px solid #ddd;">Agarbatti Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2005</td><td style="padding: 10px; border: 1px solid #ddd;">Aircraft Hangers</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2006</td><td style="padding: 10px; border: 1px solid #ddd;">Airport Terminal Buildings [including all facilities like Cafes, Shops etc]</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2007</td><td style="padding: 10px; border: 1px solid #ddd;">Aluminium/Magnesium Powder Plants</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2008</td><td style="padding: 10px; border: 1px solid #ddd;">Aluminium, Zinc, Copper Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2009</td><td style="padding: 10px; border: 1px solid #ddd;">Areca nut and/or Betel nut factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2010</td><td style="padding: 10px; border: 1px solid #ddd;">Asbestos Steam Packing and lagging manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2011</td><td style="padding: 10px; border: 1px solid #ddd;">Atta and Cereal Grinding [Excluding Dal Mills]</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2012</td><td style="padding: 10px; border: 1px solid #ddd;">Audio/Video Cassette Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2013</td><td style="padding: 10px; border: 1px solid #ddd;">Automobile Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2014</td><td style="padding: 10px; border: 1px solid #ddd;">Bakeries</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2015</td><td style="padding: 10px; border: 1px solid #ddd;">Basket Weavers and Cane Furniture Makers</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2016</td><td style="padding: 10px; border: 1px solid #ddd;">Battery Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2017</td><td style="padding: 10px; border: 1px solid #ddd;">Beedi Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2018</td><td style="padding: 10px; border: 1px solid #ddd;">Biscuit Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2019</td><td style="padding: 10px; border: 1px solid #ddd;">Bituminised Paper and / or Hessian Cloth Manufacturing including Tar Felt Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2020</td><td style="padding: 10px; border: 1px solid #ddd;">Book Binders, Envelope and Paper Bag Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2021</td><td style="padding: 10px; border: 1px solid #ddd;">Breweries</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2022</td><td style="padding: 10px; border: 1px solid #ddd;">Brickworks including refractories and fire bricks</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2023</td><td style="padding: 10px; border: 1px solid #ddd;">Bridges-Concrete / Steel</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2024</td><td style="padding: 10px; border: 1px solid #ddd;">Bridges Wooden</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2025</td><td style="padding: 10px; border: 1px solid #ddd;">Building in course of construction</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2026</td><td style="padding: 10px; border: 1px solid #ddd;">Cable Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2027</td><td style="padding: 10px; border: 1px solid #ddd;">Camphor Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2028</td><td style="padding: 10px; border: 1px solid #ddd;">Candle Works</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2029</td><td style="padding: 10px; border: 1px solid #ddd;">Canning Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2030</td><td style="padding: 10px; border: 1px solid #ddd;">Capsule Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2031</td><td style="padding: 10px; border: 1px solid #ddd;">Carbon paper / Typewriter Ribbon Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2032</td><td style="padding: 10px; border: 1px solid #ddd;">Cardamom Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2033</td><td style="padding: 10px; border: 1px solid #ddd;">Cardboard Box Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2034</td><td style="padding: 10px; border: 1px solid #ddd;">Carpenters, Wood wool Manufacturing, Furniture Manufacturing and other wood worker shops [Excluding saw Mill]</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2035</td><td style="padding: 10px; border: 1px solid #ddd;">Carpet and Drugget Manufacturing [Cotton/jute/wool]</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2036</td><td style="padding: 10px; border: 1px solid #ddd;">Carpet and Drugget Manufacturing [Others]</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2037</td><td style="padding: 10px; border: 1px solid #ddd;">Cashew nut Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2038</td><td style="padding: 10px; border: 1px solid #ddd;">Cattle feed Mill</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2039</td><td style="padding: 10px; border: 1px solid #ddd;">Celluloid Goods Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2040</td><td style="padding: 10px; border: 1px solid #ddd;">Cement/asbestos/concrete products Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2041</td><td style="padding: 10px; border: 1px solid #ddd;">Cement Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2042</td><td style="padding: 10px; border: 1px solid #ddd;">Ceramic Factories and Crockery and Stoneware pipe Manufacturing/Clay Works</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2043</td><td style="padding: 10px; border: 1px solid #ddd;">Chemical Manufacturing (Using materials with Flash Point below 32*C), Bulk Drug Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2044</td><td style="padding: 10px; border: 1px solid #ddd;">Chemical Manufacturing (Others), Pharmaceuticals, Toiletry products</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2045</td><td style="padding: 10px; border: 1px solid #ddd;">Cigar and Cigarette Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2046</td><td style="padding: 10px; border: 1px solid #ddd;">Cigarette Filter Manufacturing(Using Solvents with flash Point below 32*C)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2047</td><td style="padding: 10px; border: 1px solid #ddd;">Cigarette Filter Manufacturing (Others)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2048</td><td style="padding: 10px; border: 1px solid #ddd;">Cinema Film Production Studios</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2049</td><td style="padding: 10px; border: 1px solid #ddd;">Cinematography Film Editing, Laboratory and Sound recording rooms where Film Processing is carried out</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2050</td><td style="padding: 10px; border: 1px solid #ddd;">Cinematography Film Editing, Laboratory and Sound recording rooms without Film Processing</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2051</td><td style="padding: 10px; border: 1px solid #ddd;">Cinema Theatres [For single screen]</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2052</td><td style="padding: 10px; border: 1px solid #ddd;">Circus, Touring Drama Troupes and Touring Cinema Theatres</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2053</td><td style="padding: 10px; border: 1px solid #ddd;">Cloth Processing units situated outside the compound of Textile mills and cloth processing units which are not owned by the textile mills but are situated within the textile mills complex/compound</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2054</td><td style="padding: 10px; border: 1px solid #ddd;">Coal/cake/Charcoal ball and briquettes Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2055</td><td style="padding: 10px; border: 1px solid #ddd;">Coal Processing Plants</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2056</td><td style="padding: 10px; border: 1px solid #ddd;">Coffee Curing, Roasting / Grinding</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2057</td><td style="padding: 10px; border: 1px solid #ddd;">Coir Factories</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2058</td><td style="padding: 10px; border: 1px solid #ddd;">Collieries - Underground Machinery and pit head gear and Dragline Machine used in Collieries</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2059</td><td style="padding: 10px; border: 1px solid #ddd;">Condensed Milk Factories, Milk Pasteurising Plants and Dairies</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2060</td><td style="padding: 10px; border: 1px solid #ddd;">Confectionery Manufacturing Plants/Sugar Candy Manufacturing Plants/Sweet Meat Manufacturing Plants</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2061</td><td style="padding: 10px; border: 1px solid #ddd;">Contractors Plant and Machinery - At one location only</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2062</td><td style="padding: 10px; border: 1px solid #ddd;">Cork Products Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2063</td><td style="padding: 10px; border: 1px solid #ddd;">Cotton Gin and Press Houses</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2064</td><td style="padding: 10px; border: 1px solid #ddd;">Cotton Seed cleaning / Delinting Factory</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2065</td><td style="padding: 10px; border: 1px solid #ddd;">Dehydration Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2066</td><td style="padding: 10px; border: 1px solid #ddd;">Detergent Manufacturing with Sulphonation Plant</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2067</td><td style="padding: 10px; border: 1px solid #ddd;">Detergent Manufacturing (Others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2068</td><td style="padding: 10px; border: 1px solid #ddd;">Distilleries</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2069</td><td style="padding: 10px; border: 1px solid #ddd;">Duplicating stencil paper Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2070</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations - Hydro Power Stations</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2071</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Lamp/T.V. Picture Tube Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2072</td><td style="padding: 10px; border: 1px solid #ddd;">Electronic Goods Manufacturing/Assembly</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2073</td><td style="padding: 10px; border: 1px solid #ddd;">Electronic Software Parks/Electronic Software Development Units</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2074</td><td style="padding: 10px; border: 1px solid #ddd;">Enamel-ware factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2075</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Structural Steel Fabricators, Sheet Metal fabricators</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2076</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop [Others], Motor Vehicle Garages</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2077</td><td style="padding: 10px; border: 1px solid #ddd;">Exhibitions, Fetes, Mandaps</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2078</td><td style="padding: 10px; border: 1px solid #ddd;">Explosives / Blasting Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2079</td><td style="padding: 10px; border: 1px solid #ddd;">Fertiliser Manufacturing [other than those rateable under Petrochemical Tariff]</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2080</td><td style="padding: 10px; border: 1px solid #ddd;">Filter and wax paper Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2081</td><td style="padding: 10px; border: 1px solid #ddd;">Fireworks Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2082</td><td style="padding: 10px; border: 1px solid #ddd;">Flax / Hemp Mills</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2083</td><td style="padding: 10px; border: 1px solid #ddd;">Flour Mills</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2084</td><td style="padding: 10px; border: 1px solid #ddd;">Foamed Plastics Manufacturing and / or converting plants</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2085</td><td style="padding: 10px; border: 1px solid #ddd;">Foam Rubber Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2086</td><td style="padding: 10px; border: 1px solid #ddd;">French Polish Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2087</td><td style="padding: 10px; border: 1px solid #ddd;">Fruit and vegetable drying/dehydrating factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2088</td><td style="padding: 10px; border: 1px solid #ddd;">Fruit products and Condiment Factories (including fruit pulp making)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2089</td><td style="padding: 10px; border: 1px solid #ddd;">Garment Makers, Topee, Hats and the like makers</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2090</td><td style="padding: 10px; border: 1px solid #ddd;">Ghee Factories including vegetable Ghee mfg.</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2091</td><td style="padding: 10px; border: 1px solid #ddd;">Glass Fibre Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2092</td><td style="padding: 10px; border: 1px solid #ddd;">Glass wool Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2093</td><td style="padding: 10px; border: 1px solid #ddd;">Glass Manufacturing/Automobile Glass Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2094</td><td style="padding: 10px; border: 1px solid #ddd;">Gold thread factories / Gilding factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2095</td><td style="padding: 10px; border: 1px solid #ddd;">Granite Factories using inflammable solvents</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2096</td><td style="padding: 10px; border: 1px solid #ddd;">Granite Factories (Others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2097</td><td style="padding: 10px; border: 1px solid #ddd;">Graphite electrode Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2098</td><td style="padding: 10px; border: 1px solid #ddd;">Grain/seeds disintegrating/crushing/ Decorticating factories/ Dal mills</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2099</td><td style="padding: 10px; border: 1px solid #ddd;">Grease / Wax Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2100</td><td style="padding: 10px; border: 1px solid #ddd;">Green Houses/ Algae/ Spirulina and the like</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2101</td><td style="padding: 10px; border: 1px solid #ddd;">Gum/Glue/Gelatine Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2102</td><td style="padding: 10px; border: 1px solid #ddd;">Gypsum board manufacturer</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2103</td><td style="padding: 10px; border: 1px solid #ddd;">Hoisery, lace, Embroidery/Thread factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2104</td><td style="padding: 10px; border: 1px solid #ddd;">Ice candy and Ice cream Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2105</td><td style="padding: 10px; border: 1px solid #ddd;">Ice factories</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2107</td><td style="padding: 10px; border: 1px solid #ddd;">Industrial Diamonds Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2108</td><td style="padding: 10px; border: 1px solid #ddd;">Industrial Gas Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2109</td><td style="padding: 10px; border: 1px solid #ddd;">Ink (excluding printing ink) Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2110</td><td style="padding: 10px; border: 1px solid #ddd;">Jaggery Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2111</td><td style="padding: 10px; border: 1px solid #ddd;">Jute Mills</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2112</td><td style="padding: 10px; border: 1px solid #ddd;">Katha Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2113</td><td style="padding: 10px; border: 1px solid #ddd;">Khandsari Sugar Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2114</td><td style="padding: 10px; border: 1px solid #ddd;">Lac or Shellac Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2115</td><td style="padding: 10px; border: 1px solid #ddd;">Leather Cloth Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2116</td><td style="padding: 10px; border: 1px solid #ddd;">Leather Goods Manufacturing (incl. boot/shoe)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2117</td><td style="padding: 10px; border: 1px solid #ddd;">Lime Kiln</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2118</td><td style="padding: 10px; border: 1px solid #ddd;">Lithographic presses</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2119</td><td style="padding: 10px; border: 1px solid #ddd;">Liquified Gas Bottling/Recovery Plants</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2120</td><td style="padding: 10px; border: 1px solid #ddd;">Malt Extraction Plants</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2121</td><td style="padding: 10px; border: 1px solid #ddd;">Man-made Fibre Manufacturing (using Cellulose)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2122</td><td style="padding: 10px; border: 1px solid #ddd;">Man-made Fibre Manufacturing Plant (Others)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2123</td><td style="padding: 10px; border: 1px solid #ddd;">Manure Blending works</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2124</td><td style="padding: 10px; border: 1px solid #ddd;">Match Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2125</td><td style="padding: 10px; border: 1px solid #ddd;">Mattress and Pillow making</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2126</td><td style="padding: 10px; border: 1px solid #ddd;">Metallizing works (involving metals only)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2127</td><td style="padding: 10px; border: 1px solid #ddd;">Metallising Works (others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2128</td><td style="padding: 10px; border: 1px solid #ddd;">Metal/Tin printers</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2129</td><td style="padding: 10px; border: 1px solid #ddd;">Mica Products Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2130</td><td style="padding: 10px; border: 1px solid #ddd;">Mineral Oil blending and processing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2131</td><td style="padding: 10px; border: 1px solid #ddd;">Mosaic Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2132</td><td style="padding: 10px; border: 1px solid #ddd;">Mushroom Growing Premises (Excluding Crops)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2133</td><td style="padding: 10px; border: 1px solid #ddd;">Nitro Cellulose Manufacturing- Industrial Grade</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2134</td><td style="padding: 10px; border: 1px solid #ddd;">Non-woven fabric Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2135</td><td style="padding: 10px; border: 1px solid #ddd;">Oil Extraction</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2136</td><td style="padding: 10px; border: 1px solid #ddd;">Oil Distillation Plants (essential)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2137</td><td style="padding: 10px; border: 1px solid #ddd;">Oil Mills refining (Veg/Animal)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2138</td><td style="padding: 10px; border: 1px solid #ddd;">Oil Mills (Vegetable)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2139</td><td style="padding: 10px; border: 1px solid #ddd;">Oil and Leather Cloth Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2140</td><td style="padding: 10px; border: 1px solid #ddd;">Paint factories (Water based)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2141</td><td style="padding: 10px; border: 1px solid #ddd;">Paint (others) & Varnish Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2142</td><td style="padding: 10px; border: 1px solid #ddd;">Paints - Nitrocellulose based</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2143</td><td style="padding: 10px; border: 1px solid #ddd;">Pan Masala making</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2144</td><td style="padding: 10px; border: 1px solid #ddd;">Paper and Cardboard Mills (including Lamination)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2145</td><td style="padding: 10px; border: 1px solid #ddd;">Particle Board Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2146</td><td style="padding: 10px; border: 1px solid #ddd;">Pencil Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2147</td><td style="padding: 10px; border: 1px solid #ddd;">Petroleum Coke Calcination</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2148</td><td style="padding: 10px; border: 1px solid #ddd;">Plastic Goods Manufacturing (excluding Foam Plastics)/ I. Using Plastic raw materials having calorific value upto 15000 btu/lb Polytetrafluoroethylene, Polychorotrif, fluroehtylene, Polyvinyl chloride, polyvinylidene chloride, Polyvinylidene fluoride, Chlorinated polyether, Polycarbonate, Polymethyl methacrylate, Phenol formaldehyde, Urea-formaldehyde, Melamine-formaldehyde, Polyurethane, Polyster, Silicones</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2149</td><td style="padding: 10px; border: 1px solid #ddd;">Plywood / Wood veneering Factories/ Laminating Factories</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2150</td><td style="padding: 10px; border: 1px solid #ddd;">Polyester Film Manufacturing / BOPP Film Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2151</td><td style="padding: 10px; border: 1px solid #ddd;">Port Premises including jetties and equipment thereon And other port facilities</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2152</td><td style="padding: 10px; border: 1px solid #ddd;">Poultry Farms (Excluding birds therein)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2153</td><td style="padding: 10px; border: 1px solid #ddd;">Presses for coir fibres/waste/Grass/fodder/boosa/Jute</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2154</td><td style="padding: 10px; border: 1px solid #ddd;">Presses for coir yarn / cotton/senna leaves</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2155</td><td style="padding: 10px; border: 1px solid #ddd;">Presses for carpets, rugs and tobacco</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2156</td><td style="padding: 10px; border: 1px solid #ddd;">Presses for hides and skins</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2157</td><td style="padding: 10px; border: 1px solid #ddd;">Printing Ink Manufacturing / Roller composition factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2158</td><td style="padding: 10px; border: 1px solid #ddd;">Printing Press</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2159</td><td style="padding: 10px; border: 1px solid #ddd;">Pulverising Plants(Metals and non-hazardous goods)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2160</td><td style="padding: 10px; border: 1px solid #ddd;">Pulverizing Plants (Others)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2161</td><td style="padding: 10px; border: 1px solid #ddd;">Rice Mills</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2162</td><td style="padding: 10px; border: 1px solid #ddd;">Rice Polishing Units</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2163</td><td style="padding: 10px; border: 1px solid #ddd;">Rope works (Plastic), Assembling of Plastic Goods such as Toys and the like</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2164</td><td style="padding: 10px; border: 1px solid #ddd;">Rope Works (others)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2165</td><td style="padding: 10px; border: 1px solid #ddd;">Rubber Factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2166</td><td style="padding: 10px; border: 1px solid #ddd;">Rubber Goods Mfg with Spreading</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2167</td><td style="padding: 10px; border: 1px solid #ddd;">Rubber Goods Manufacturing without spreading</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2168</td><td style="padding: 10px; border: 1px solid #ddd;">Salt crushing Factories and Refineries</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2169</td><td style="padding: 10px; border: 1px solid #ddd;">Saw Mills (including Timber Merchants premises where sawing is done)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2170</td><td style="padding: 10px; border: 1px solid #ddd;">Sea Food / Meat Processing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2171</td><td style="padding: 10px; border: 1px solid #ddd;">Silk Mills / Spun Silk Mills</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2172</td><td style="padding: 10px; border: 1px solid #ddd;">Snuff Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2173</td><td style="padding: 10px; border: 1px solid #ddd;">Soap Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2174</td><td style="padding: 10px; border: 1px solid #ddd;">Sponge Iron Plants</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2175</td><td style="padding: 10px; border: 1px solid #ddd;">Spray Painting, Powder coating</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2176</td><td style="padding: 10px; border: 1px solid #ddd;">Stables (excluding animals)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2177</td><td style="padding: 10px; border: 1px solid #ddd;">Starch Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2178</td><td style="padding: 10px; border: 1px solid #ddd;">Stone quarries</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2180</td><td style="padding: 10px; border: 1px solid #ddd;">Sugar factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2181</td><td style="padding: 10px; border: 1px solid #ddd;">Surgical Cotton Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2183</td><td style="padding: 10px; border: 1px solid #ddd;">Tanneries</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2184</td><td style="padding: 10px; border: 1px solid #ddd;">Tapioca factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2185</td><td style="padding: 10px; border: 1px solid #ddd;">Tarpaulin and canvas proofing factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2186</td><td style="padding: 10px; border: 1px solid #ddd;">Tea blending/packing factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2187</td><td style="padding: 10px; border: 1px solid #ddd;">Tea Factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2188</td><td style="padding: 10px; border: 1px solid #ddd;">Telephone Exchanges</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2189</td><td style="padding: 10px; border: 1px solid #ddd;">Textile Mills - Spinning Mills</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2190</td><td style="padding: 10px; border: 1px solid #ddd;">Tile & Pottery works</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2191</td><td style="padding: 10px; border: 1px solid #ddd;">Tiny sector industries with values at risk not exceeding Rs 10 lakhs</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2192</td><td style="padding: 10px; border: 1px solid #ddd;">Tissue Culture Premises (Excluding Crops)</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2193</td><td style="padding: 10px; border: 1px solid #ddd;">Tobacco Curing / Redrying Factories</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2194</td><td style="padding: 10px; border: 1px solid #ddd;">Tobacco grinding/ crushing Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2195</td><td style="padding: 10px; border: 1px solid #ddd;">Turpentine and rosin distilleries</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2196</td><td style="padding: 10px; border: 1px solid #ddd;">Tyres and Tubes Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2197</td><td style="padding: 10px; border: 1px solid #ddd;">Tyre Retreading and Resoling factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2198</td><td style="padding: 10px; border: 1px solid #ddd;">Umbrella Assembly factories</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2199</td><td style="padding: 10px; border: 1px solid #ddd;">Velvet Cloth Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2200</td><td style="padding: 10px; border: 1px solid #ddd;">Vermicelli factories</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2201</td><td style="padding: 10px; border: 1px solid #ddd;">Weigh Bridges</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2202</td><td style="padding: 10px; border: 1px solid #ddd;">Weaving Mills</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2203</td><td style="padding: 10px; border: 1px solid #ddd;">Wheat Threshers</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2204</td><td style="padding: 10px; border: 1px solid #ddd;">Wood seasoning/treatment/ impregnation</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2205</td><td style="padding: 10px; border: 1px solid #ddd;">Wool cleaning and pressing factories</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2206</td><td style="padding: 10px; border: 1px solid #ddd;">Woollen Mills/Fur garments & accessories</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2207</td><td style="padding: 10px; border: 1px solid #ddd;">Yarn Processing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2208</td><td style="padding: 10px; border: 1px solid #ddd;">Zip fasteners Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2209</td><td style="padding: 10px; border: 1px solid #ddd;">Contractors Plant and Machinery anywhere in India (at specified locations)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2210</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations - Others</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2211</td><td style="padding: 10px; border: 1px solid #ddd;">Textile Mills- Composite Mills</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2212</td><td style="padding: 10px; border: 1px solid #ddd;">Automobile Filter Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2213</td><td style="padding: 10px; border: 1px solid #ddd;">Lignite Handling System</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2215</td><td style="padding: 10px; border: 1px solid #ddd;">Pilot Plants</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2216</td><td style="padding: 10px; border: 1px solid #ddd;">Plastic Goods Manufacturing (excluding Foam Plastics)/ II. Using Plastic raw materials having calorific value of above 15000 btu/lb polyethylene, Polypropylene, Prolystyrene, Polyalphamethylstyrene, Acrylonitrilebutadiene-styrene, Polybutylene.</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2217</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations - Thermal Power Stations</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2218</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations - Solar Power Stations</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2219</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations - Windmill</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2220</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations -Nuclear Power Stations</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2221</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Generation Stations - Biomass Power Stations</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2222</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Steel Plants</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2223</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop-Hot/cold rolling mill</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2224</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Pipe Extruding, Stamping, Pressing, Forging Mills, Metal smelting, Foundries, Galvanising works</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2225</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Metal Extraction, Ore processing (other than Aluminium, Copper, Zinc), Plant processing Raw sand into silica</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2226</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Ferro Alloy Plant / Ferro Silicon Plant</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2227</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Clock/Watch Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2228</td><td style="padding: 10px; border: 1px solid #ddd;">Engineering Workshop - Manufacturing of Cut & Polished Diamonds</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2229</td><td style="padding: 10px; border: 1px solid #ddd;">Multiplex Theatre Complexes</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2230</td><td style="padding: 10px; border: 1px solid #ddd;">Shopping Malls (other than multiplexes)</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2231</td><td style="padding: 10px; border: 1px solid #ddd;">Disposable Diaper manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2232</td><td style="padding: 10px; border: 1px solid #ddd;">Sports Goods Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">2999</td><td style="padding: 10px; border: 1px solid #ddd;">Sports Goods Manufacturing</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3001</td><td style="padding: 10px; border: 1px solid #ddd;">Analytical / Quality Control Laboratories</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3002</td><td style="padding: 10px; border: 1px solid #ddd;">Boiler House</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3003</td><td style="padding: 10px; border: 1px solid #ddd;">Dams</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3004</td><td style="padding: 10px; border: 1px solid #ddd;">Effluent /Sewage Treatment Plant</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3005</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Sub-Stations, Loco sheds</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3006</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Transmission / Distribution Lines</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3007</td><td style="padding: 10px; border: 1px solid #ddd;">Pipe lines (carrying water only)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3008</td><td style="padding: 10px; border: 1px solid #ddd;">Pipe lines (others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3009</td><td style="padding: 10px; border: 1px solid #ddd;">Pump House (Water)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3010</td><td style="padding: 10px; border: 1px solid #ddd;">Pump House (Others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3011</td><td style="padding: 10px; border: 1px solid #ddd;">Railway tracks</td><td style="padding: 10px; border: 1px solid #ddd;">35</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3012</td><td style="padding: 10px; border: 1px solid #ddd;">Roads</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3013</td><td style="padding: 10px; border: 1px solid #ddd;">Water Treatment Plants/ Water Tanks</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3014</td><td style="padding: 10px; border: 1px solid #ddd;">Wireless Transmitting Stations</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3015</td><td style="padding: 10px; border: 1px solid #ddd;">Compressor Houses- Compressors handling air, Inert gas and CO2</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3016</td><td style="padding: 10px; border: 1px solid #ddd;">Compressor Houses- Compressor (others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3017</td><td style="padding: 10px; border: 1px solid #ddd;">Boundary Walls - Made up of Combustible Material</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3018</td><td style="padding: 10px; border: 1px solid #ddd;">Boundary Walls - Others</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">3019</td><td style="padding: 10px; border: 1px solid #ddd;">Electric Crematoriums</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4001</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of Non-hazardous goods subject to warranty that hazardous goods of Category I, II, III, Coir waste, Coir fibre and Caddies are not stored therein.(Materials stored in Godowns & Silos)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4002</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of Category I hazardous Goods subject to warranty that goods listed in Category II, III, Coir waste, Coir fibre and Caddies are not stored therein. (Materials stored in Godowns & Silos)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4003</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of hazardous Goods listed in Category II subject to warranty that goods listed in Category III, Coir waste, Coir fibre and Caddies are not stored therein.(Materials stored in Godowns & Silos)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4004</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of hazardous Goods listed in Category III subject to warranty that Coir waste, Coir fibre and, Caddies are not stored therein. (Materials stored in Godowns & Silos)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4005</td><td style="padding: 10px; border: 1px solid #ddd;">Transporter's godowns & Godowns of clearing and forwarding agents.(Materials stored in Godowns & Silos)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4006</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of Coir Waste, Coir Fibre, Caddies (Materials stored in Godowns & Silos)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4007</td><td style="padding: 10px; border: 1px solid #ddd;">Cold Storage premises</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4008</td><td style="padding: 10px; border: 1px solid #ddd;">Gas Holders/ Bullets/spheres and storages for liquified gases except for Nitrogen, Carbon dioxide and inert gases</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4009</td><td style="padding: 10px; border: 1px solid #ddd;">Gas Holders/ Vessels for Nitrogen, Carbon dioxide and inert gases</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4010</td><td style="padding: 10px; border: 1px solid #ddd;">Tanks containing liquids flashing at 32 0C and below</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4011</td><td style="padding: 10px; border: 1px solid #ddd;">Tanks (others)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4012</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of Non-hazardous goods subject to warranty that hazardous goods of Category I, II, III, Coir waste, Coir fibre and Caddies are not stored therein.(Materials stored in open)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4013</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of Category I hazardous Goods subject to warranty that goods listed in Category II, III, Coir waste, Coir fibre and Caddies are not stored therein. (Materials stored in open)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4014</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of hazardous Goods listed in Category II subject to warranty that goods listed in Category III, Coir waste, Coir fibre and Caddies are not stored therein.(Materials stored in open)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4015</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of hazardous Goods listed in Category III subject to warranty that Coir waste, Coir fibre and, Caddies are not stored therein. (Materials stored in open)</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4016</td><td style="padding: 10px; border: 1px solid #ddd;">Transporter's godowns & Godowns of clearing and forwarding agents.(Materials stored in open)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4017</td><td style="padding: 10px; border: 1px solid #ddd;">Storage of Coir Waste, Coir Fibre, Caddies (Materials stored in open)</td><td style="padding: 10px; border: 1px solid #ddd;">5</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4018</td><td style="padding: 10px; border: 1px solid #ddd;">Bus Terminus</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4019</td><td style="padding: 10px; border: 1px solid #ddd;">Vehicles stored in open including Tractors</td><td style="padding: 10px; border: 1px solid #ddd;">25</td></tr>
+<tr><td style="padding: 10px; border: 1px solid #ddd;">4900</td><td style="padding: 10px; border: 1px solid #ddd;">Silent risk</td><td style="padding: 10px; border: 1px solid #ddd;">15</td></tr>
+
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
             }
         },
         "ENGINEERING": {
@@ -1112,7 +1429,29 @@
         forwardPath = [];
         render();
     }
-
+// Search filter logic for the Remuneration Table
+    function filterRemuneration() {
+        let input = document.getElementById("remSearchInput");
+        if (!input) return;
+        let filter = input.value.toUpperCase();
+        let table = document.getElementById("remTable");
+        let tr = table.getElementsByTagName("tr");
+        
+        for (let i = 1; i < tr.length; i++) {
+            let tdCode = tr[i].getElementsByTagName("td")[0];
+            let tdOcc = tr[i].getElementsByTagName("td")[1];
+            if (tdCode || tdOcc) {
+                let txtValueCode = tdCode.textContent || tdCode.innerText;
+                let txtValueOcc = tdOcc.textContent || tdOcc.innerText;
+                
+                if (txtValueCode.toUpperCase().indexOf(filter) > -1 || txtValueOcc.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
     window.onload = render;
 </script>
 
