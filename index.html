@@ -364,84 +364,86 @@
                             <h4>e) Long Term PC Package Policy</h4>
                         </div>
                     `,
-                    "TW": {
-                        "New Two Wheeler": {
-                            "Discount with or without add-on": "85%"
-                        },
-                        "Old Two Wheeler": {
-                            "Discount with add-on": "70%",
-                            "Discount without add-on-Package Policy": "60%"
-                        },
-                        "SAOD Two Wheeler": {
-                            "Discount with or without add-on": "60%"
-                        }
-                    },
-                    "GCV": {
-                        "GVW Up to 7500": {
-                            "Discount with or without add-on": {
-                                "New veh with add-on": "95%",
-                                "New veh without add-on": "90%",
-                                "Old veh with add-on": "90%",
-                                "Old veh without add-on": "90%"
-                            },
-                            "Discount on add-on cover premium": {
-                                "NIL DEP": {
-                                    "New veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)",
-                                    "Old veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)"
-                                }
-                            }
-                        },
-                        "GVW Up to 7501 to 20000": {
-                            "Discount with or without add-on": {
-                                "New veh with add-on": "95%",
-                                "New veh without add-on": "85%",
-                                "Old veh with add-on": "85%",
-                                "Old veh without add-on": "85% revised 82%"
-                            },
-                            "Discount on add-on cover premium": {
-                                "NIL DEP": {
-                                    "New veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)",
-                                    "Old veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)"
-                                }
-                            }
-                        },
-                        "GVW Up to 20001 to 40000": {
-                            "Discount with or without add-on": {
-                                "New veh with add-on": "95%",
-                                "New veh without add-on": "85%",
-                                "Old veh with add-on": "85%",
-                                "Old veh without add-on": "85% revised 82%",
-                                "Group 1 Max Disc 65% RTO Codes": "HR58, TN69, DL1G, MH34, PB13, HR69, RJ09, UP32, HR55, MH40, CG08, PB03, TN12, HR63, GJ39",
-                                "Group 2 Max Disc 60% RTO Codes": "GJ12, MP19, OD35, TN75, MP07, CG04, HR65, PB11, UP25",
-                                "Group 3 Max Disc 50% RTO Codes": "CG10, TS01, NL01, KL40, TN85, RJ11, PB02, TN18, HR38, OD14",
-                                "Group 4 Max Disc 40% RTO Codes": "CG11, CG12, PB07, AS25, JH10, RJ10, CG13, PB08, AS01, MP15"
-                            },
-                            "Discount on add-on cover premium": {
-                                "NIL DEP": {
-                                    "New veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)",
-                                    "Old veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)"
-                                }
-                            }
-                        },
-                        "GVW Above 40000": {
-                            "Discount with or without add-on": {
-                                "New veh with add-on": "95% (NEW), NA (NIA-REN), NA (OTHR-CO)",
-                                "New veh without add-on": "85% (NEW), NA (NIA-REN), NA (OTHR-CO)",
-                                "Old veh with add-on": "NA (NEW), 75% (NIA-REN), 65% (OTHR-CO)",
-                                "Old veh without add-on": "NA (NEW), 75% (NIA-REN), 65% (OTHR-CO)",
-                                "Group 1 Max Disc 65% RTO Codes": "UP65, OD04, PB65, UP92, MH34, RJ32, RJ11, KA32, UP32, HR63, MH26",
-                                "Group 2 Max Disc 60% RTO Codes": "UP53, UP78, DD01, OD14, PB11, HR38, UP35, HR46, HR58, UP93, GJ12, NL01, TS07, UP42, GJ39, MP07, HR69, RJ02, PB03, MH40",
-                                "Group 3 Max Disc 50% RTO Codes": "PB13, OD09, HR45, CG15, OD16, CG04",
-                                "Group 4 Max Disc 40% RTO Codes": "UP25, CG13, UP71, CG10, CG11, CG12"
-                            },
-                            "Discount on add-on cover premium": {
-                                "NIL DEP": {
-                                    "New veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)",
-                                    "Old veh with add-on": "0-3 yrs (60%) | 4-5 yrs (40%)"
-                                }
-                            }
-                        }
-                    },
+                    "TW": `
+                        <div style="padding: 15px; background: #ffffff; border: 1px solid #dce4ec; border-radius: 6px;">
+                            <h4>a) New Two Wheeler:</h4>
+                            <p><strong>Discount with or without add-on:</strong> 85%</p>
+
+                            <h4>b) Old Two Wheeler:</h4>
+                            <p><strong>Discount with add-on:</strong> 70% (not yet deployed)<br>
+                            <strong>Discount without add-on-Package Policy:</strong> 60%</p>
+
+                            <h4>c) SAOD Two Wheeler:</h4>
+                            <p><strong>Discount with or without add-on:</strong> 60%</p>
+                        </div>
+                    `,
+                    "GCV": `
+                        <div style="max-height: 450px; overflow-y: auto; padding: 15px; background: #ffffff; border: 1px solid #dce4ec; border-radius: 6px;">
+                            <h4>(i) GVW Up to 7500 :-</h4>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li>a) New veh with add-on: 95%</li>
+                                <li>b) New veh without add-on: 90%</li>
+                                <li>c) Old veh with add-on: 90%</li>
+                                <li>d) Old veh without add-on: 90%</li>
+                            </ul>
+                            <p>
+                                a) New veh with add-on : Discount on NIL dep 0-3 yrs - 60%, 4-5 yrs - 40%<br>
+                                b) Old veh with add-on : Discount on NIL dep 0-3 yrs - 60%, 4-5 yrs - 40%
+                            </p>
+
+                            <h4>(ii) GVW Up to 7501 to 20000 :-</h4>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li>a) New veh with add-on: 95%</li>
+                                <li>b) New veh without add-on: 85%</li>
+                                <li>c) Old veh with add-on: 85%</li>
+                                <li>d) Old veh without add-on: 82%</li>
+                            </ul>
+                            <p>
+                                a) New veh with add-on : Discount on NIL dep 0-3 yrs - 60%, 4-5 yrs - 40%<br>
+                                b) Old veh with add-on : Discount on NIL dep 0-3 yrs - 60%, 4-5 yrs - 40%
+                            </p>
+
+                            <h4>(iii) GVW Up to 20001 to 40000 :-</h4>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li>a) New veh with add-on: 95%</li>
+                                <li>b) New veh without add-on: 85%</li>
+                                <li>c) Old veh with add-on: 85%</li>
+                                <li>d) Old veh without add-on: 82%</li>
+                            </ul>
+                            <p>
+                                a) New veh with add-on : Discount on NIL dep 0-3 yrs - 60%, 4-5 yrs - 40%<br>
+                                b) Old veh with add-on : Discount on NIL dep 0-3 yrs - 60%, 4-5 yrs - 40%
+                            </p>
+
+                            <h5>RTO BASED:-</h5>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li><strong>Group 1 Max Disc 65% RTO Codes:</strong> HR58, TN69, DL1G, MH34, PB13, HR69, RJ09, UP32, HR55, MH40, CG08, PB03, TN12, HR63, GJ39</li>
+                                <li><strong>Group 2 Max Disc 60% RTO Codes:</strong> GJ12, MP19, OD35, TN75, MP07, CG04, HR65, PB11, UP25</li>
+                                <li><strong>Group 3 Max Disc 50% RTO Codes:</strong> CG10, TS01, NL01, KL40, TN85, RJ11, PB02, TN18, HR38, OD14</li>
+                                <li><strong>Group 4 Max Disc 40% RTO Codes:</strong> CG11, CG12, PB07, AS25, JH10, RJ10, CG13, PB08, AS01, MP15</li>
+                            </ul>
+
+                            <h4>(iv) GVW Above 40000 :-</h4>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li>a) New veh with add-on : 85% (NEW)</li>
+                                <li>b) New veh without add-on : 85% (NEW)</li>
+                                <li>c) Old veh with add-on : 75% (NIA-REN), 65% (OTHR-CO)</li>
+                                <li>d) Old veh without add-on : 75% (NIA-REN), 65% (OTHR-CO)</li>
+                            </ul>
+                            <p>
+                                a) New veh with add-on : Discount on NIL dep : 0-3 yrs - 60%, 4-5 yrs - 40%<br>
+                                b) Old veh with add-on : Discount on NIL dep : 0-3 yrs - 60%, 4-5 yrs - 40%
+                            </p>
+
+                            <h5>RTO BASED:-</h5>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li><strong>Group 1 Max Disc 65% RTO Codes:</strong> UP65, OD04, PB65, UP92, MH34, RJ32, RJ11, KA32, UP32, HR63, MH26</li>
+                                <li><strong>Group 2 Max Disc 60% RTO Codes:</strong> UP53, UP78, DD01, OD14, PB11, HR38, UP35, HR46, HR58, UP93, GJ12, NL01, TS07, UP42, GJ39, MP07, HR69, RJ02, PB03, MH40</li>
+                                <li><strong>Group 3 Max Disc 50% RTO Codes:</strong> PB13, OD09, HR45, CG15, OD16, CG04</li>
+                                <li><strong>Group 4 Max Disc 40% RTO Codes:</strong> UP25, CG13, UP71, CG10, CG11, CG12</li>
+                            </ul>
+                        </div>
+                    `,
                     "TRAILERS": "Discount = disc 50% revised 60%",
                     "PCV": {
                         "PCV 4W C1 (upto 6 passn)": {
@@ -476,7 +478,7 @@
                     }
                 },
                 "NON-SIP": {
-                    "NON-SIP Guidelines": `
+                    "_info": `
                         <ul>
                             <li>Vehicle age more than 20 years</li>
                             <li>Fleet owners where fleet is identified by fleet master</li>
@@ -488,7 +490,8 @@
                             <li>New GCV & New Buses > 60 lakh</li>
                             <li>Old Comm Veh > 50 lakh</li>
                             <li>Misc D irrespective of IDV are NON-SIP (Except-IDV upto 50 lakhs Agri Tractor, Ambulance, Dispensaries, Fire Brigade & Salvage Corps Veh, Hearses, Excavators, Cranes which come under SIP)</li>
-                        </ul>`,
+                        </ul>
+                    `,
                     "PC": {
                         "New (Except Maruti, Ford & Etios from Toyota)": {
                             "Discount with or without add-on": "95%",
